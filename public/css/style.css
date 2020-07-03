@@ -1,0 +1,44 @@
+p {
+    margin: 10px 0 !important;
+}
+
+.login-container {
+    width: 440px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.fa-small {
+    font-size: 16px !important;
+}
+
+.btn-float {
+    float: left;
+    margin-right: 10px;
+}
+
+.img-small {
+    width: 180px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.fooot {
+    background-color: #4d4343 !important;
+}
+
+.foot {
+    background-color: #424242 !important;
+}
+
+#footS {
+    margin-left: 15%;
+}

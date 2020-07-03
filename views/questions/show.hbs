@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col s12 m8">
+        <h3>{{question.title}}
+            {{#if (checkAdmin user)}}
+            <small>{{{ editIcon question.user user question._id false }}}</small>
+            {{/if}}
+        </h3>
+        <div class="card story">
+            <div class="card-content">
+                <span class="card-title">{{formatDate date 'MMMM Do YYYY, h:mm:ss a'}}</span>
+                {{{question.body}}}
+            </div>
+        </div>
+    </div>
+    {{!-- <div class="col s12 m4">
+        <div class="card center-align">
+            <div class="card-content">
+                <span class="card-title">{{question.user.displayName}}</span>
+                <img src="{{question.user.image}}" class="circle responsive-img img-small" >
+            </div>
+            <div class="card-action">
+                <a href="/questions/user/{{question.user._id}}">More From {{question.user.firstName}}</a>
+            </div>
+        </div>
+    </div> --}}
+</div>

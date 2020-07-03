@@ -1,0 +1,29 @@
+<h1>Questions</h1>
+
+<div class="row">
+    {{#each questions}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {{#if (checkAdmin user)}}
+                {{{editIcon user ../user _id}}}
+                {{/if}}
+            </div>
+            <div class="card-content center-align">
+                <h5>{{title}}</h5>
+                <p>{{stripTags (truncate body 150)}}</p>
+                <br>
+                {{!-- <div class="chip">
+                    <img src="{{user.image}}" alt="">
+                    <a href="/questions/user/{{user._id}}">{{user.firstName}}</a>
+                </div> --}}
+            </div>
+            <div class="card-action center-align">
+                <a href="/questions/{{_id}}" class="btn grey">Read More</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>No questions to display</p>
+    {{/each}}
+</div>
