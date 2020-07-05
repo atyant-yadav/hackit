@@ -1,6 +1,14 @@
 <h3>Add Question</h3>
 <div class="row">
     <form action="/questions" method="POST" class="col s12">
+        
+        <div class="row">
+            <div class="input-field">
+                <input type="number" id="questionNo" name="questionNo" min="1" max="1000">
+                <label for="title">Question Number</label>
+            </div>
+        </div>
+        
         <div class="row">
             <div class="input-field">
                 <input type="text" id="title" name="title">

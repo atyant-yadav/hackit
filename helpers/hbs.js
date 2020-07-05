@@ -1,10 +1,20 @@
 const moment = require('moment')
 
-let adminName = 'b17037'
+let adminName0 = 'b17037'
+let adminName1 = 'Rishabh'
+let adminName2 = 'b17116'
 
 module.exports = {
     checkAdmin: function (loggedUser) {
-        if (adminName.toString() == loggedUser.firstName.toString()){
+        if (adminName0.toString() == loggedUser.firstName.toString() || adminName1.toString() == loggedUser.firstName.toString() || adminName2.toString() == loggedUser.firstName.toString()){
+            return true
+        }
+        else {
+            return false
+        }
+    },
+    questionStatus: function (quesNo, loggedUser) {
+        if (loggedUser.questionNumber >= quesNo ){
             return true
         }
         else {
@@ -38,4 +48,11 @@ module.exports = {
             return ''
        }
     },
+    lockIcon: function (questionStatus) {
+        if (questionStatus) {
+            return `<a class="btn-floating halfway-fa blue"><i class="fa fa-unlock fa-small"></i></a>`
+        } else {
+            return `<a class="btn-floating halfway-fa grey"><i class="fa fa-lock"></i></a>`
+        }
+     },
 }

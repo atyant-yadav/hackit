@@ -29,7 +29,7 @@ router.get('/', ensureAuth, async (req, res) => {
     try {
         const questions = await Question.find({ })
             .populate('user')
-            .sort({ createdAt: 'desc' })
+            .sort({ questionNo: 'asc' })
             .lean()
         
         res.render  ('questions/index', {

@@ -10,6 +10,10 @@
                 {{/if}}
             </div>
             <div class="card-content center-align">
+                <h4>
+                    {{{lockIcon (questionStatus questionNo ../user)}}}
+                    Ques: {{questionNo}}
+                </h4>
                 <h5>{{title}}</h5>
                 <p>{{stripTags (truncate body 150)}}</p>
                 <br>
@@ -19,7 +23,12 @@
                 </div> --}}
             </div>
             <div class="card-action center-align">
-                <a href="/questions/{{_id}}" class="btn grey">Read More</a>
+                {{#if (questionStatus questionNo ../user)}}
+                    <a href="/questions/{{_id}}" class="btn blue">Read More</a>
+                {{else}}
+                    <a  class="btn grey">Solve Previous to Unlock</a>
+                {{/if}}
+                
             </div>
         </div>
     </div>

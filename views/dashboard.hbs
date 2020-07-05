@@ -10,15 +10,31 @@
     <table class="striped">
         <thead>
             <tr>
+                <th>Question No</th>
                 <th>Title</th>
-                <th>Date</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             {{#each questions}}
                 <tr>
-                    <td><a href="/questions/{{_id}}"> {{title}} </a></td>
-                    <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
+                    <td>{{questionNo}}</td>
+                    <td>
+                        {{#if (questionStatus questionNo ../user)}}
+                            <a href="/questions/{{_id}}"> {{title}} </a>
+                        {{else}}
+                            {{title}}
+                        {{/if}}
+                    </td>
+                    {{#if (questionStatus questionNo ../user)}}
+                    <td>
+                        <a><i class="fa fa-unlock fa-2x" aria-hidden="true"></i></a>
+                    </td>
+                    {{else}}
+                        <td>
+                            <i class="fa fa-lock fa-2x" aria-hidden="true"></i>
+                        </td>
+                    {{/if}}
                     {{#if (checkAdmin ../user)}}
                     <td>
                         <a href="/questions/edit/{{_id}}" class="btn btn-float">

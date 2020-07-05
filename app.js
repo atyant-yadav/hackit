@@ -40,7 +40,7 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 // Handlebars helpers
-const { checkAdmin, formatDate, stripTags, truncate, editIcon } = require('./helpers/hbs')
+const { checkAdmin, formatDate, stripTags, truncate, editIcon, questionStatus, lockIcon } = require('./helpers/hbs')
 
 // Handlebars
 app.engine(
@@ -52,6 +52,8 @@ app.engine(
             stripTags,
             truncate,
             editIcon,
+            questionStatus,
+            lockIcon,
         }, 
         defaultLayout: 'main', 
         extname: '.hbs',

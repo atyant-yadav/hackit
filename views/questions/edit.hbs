@@ -2,6 +2,14 @@
 <div class="row">
     <form action="/questions/{{question._id}}" method="POST" class="col s12">
     <input type="hidden" name="_method" value="PUT">
+        
+        <div class="row">
+            <div class="input-field">
+                <input type="number" id="questionNo" name="questionNo" min="1" max="1000" value="{{question.questionNo}}">
+                <label for="title">Question Number</label>
+            </div>
+        </div>
+        
         <div class="row">
             <div class="input-field">
                 <input type="text" id="title" name="title" value="{{question.title}}">

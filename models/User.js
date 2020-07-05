@@ -13,6 +13,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    questionNumber: {
+        type: Number,
+        default: 1,
+    },
     lastName: {
         type: String,
         required: true
