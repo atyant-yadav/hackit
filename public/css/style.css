@@ -42,3 +42,11 @@ main {
 #footS {
     margin-left: 15%;
 }
+
+.imgg {
+    display: block;
+    max-width:582.767px;
+    max-height:582.767px;
+    width: auto;
+    height: auto;
+}

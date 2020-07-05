@@ -25,7 +25,7 @@
 
     <script>
         M.Sidenav.init(document.querySelector('.sidenav'))
-        M.FormSelect.init(document.querySelector('#status'))
+        M.Carousel.init(document.querySelector('.carousel'), {fullWidth: true,indicators: true})
 
         CKEDITOR.replace('body', {
             plugins: 'wysiwygarea, toolbar, basicstyles, link'
