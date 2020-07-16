@@ -1,17 +1,16 @@
 const moment = require('moment')
 
-let adminName0 = 'b17037'
-let adminName1 = 'Rishabh'
-let adminName2 = 'b17116'
+let adminName = ['b17037', 'Rishabh', 'b17116', 'Satyam', 'Sambhav']
 
 module.exports = {
     checkAdmin: function (loggedUser) {
-        if (adminName0.toString() == loggedUser.firstName.toString() || adminName1.toString() == loggedUser.firstName.toString() || adminName2.toString() == loggedUser.firstName.toString()){
-            return true
-        }
-        else {
-            return false
-        }
+        let flag = false;
+        for (i = 0; i < adminName.length; i++) {
+            if (adminName[i].toString() == loggedUser.firstName.toString()){
+                flag = true
+            }
+        } 
+        return flag;
     },
     questionStatus: function (quesNo, loggedUser) {
         if (loggedUser.questionNumber >= quesNo ){
@@ -45,16 +44,20 @@ module.exports = {
     stripTags: function (input) {
         return input.replace(/<(?:.|\n)*?>/gm, '')
     },
-    editIcon: function (storyUser, loggedUser, worldId, floating = true) {
-       if (storyUser._id.toString() == loggedUser._id.toString()) {
+    editIcon: function (loggedUser, worldId, floating = true) {
+        let flag = false;
+        for (i = 0; i < adminName.length; i++) {
+            if(adminName[i].toString() == loggedUser.toString()) flag = true
+        } 
+        if (flag) {
             if (floating) {
                 return `<a href="/worlds/edit/${worldId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`
             } else {
                 return `<a href="/worlds/edit/${worldId}"><i class="fas fa-edit"></i></a>`
             }
-       } else {
+        } else {
             return ''
-       }
+        }
     },
     lockIcon: function (questionStatus) {
         if (questionStatus) {
@@ -62,5 +65,61 @@ module.exports = {
         } else {
             return `<a class="btn-floating halfway-fa grey"><i class="fa fa-lock"></i></a>`
         }
-     },
+    },
+    qImage: function (question) {
+        let ans = `
+        <div class="card" id="carousel">
+            <div class="carousel carousel-slider center">
+        `
+        for (let i = 1; i <= question.imageNo; i++) {
+            let imge = question.worldNumber+'_'+question.questionNo+'_'+i
+            ans+= `
+            <div class="carousel-item red" href="#one!">
+                <img class="imgg" src="/img/${imge}.jpeg" >
+            </div>
+            `
+        }
+        ans+= `
+            </div>
+        </div>
+        `
+        if(question.imageNo > 0){
+            return ans
+        }
+        else{
+            return ``
+        }
+    },
+    qAudio: function (question) {
+        if (question.audioNo == 1){
+        let aud = question.worldNumber+'_'+question.questionNo
+        return `
+            <div class="card">
+                <audio controls>
+                    <source src="/audio/${aud}.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            `
+        }
+        else{
+            return ``
+        }
+    },
+    qVideo: function (question) {
+        if (question.audioNo == 1){
+        let vid = question.worldNumber+'_'+question.questionNo
+        return `
+        <div class="card">
+            <video width="400" controls>
+                <source src="/video/${vid}.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+        </div>
+            `
+        }
+        else{
+            return ``
+        }
+    },
 }

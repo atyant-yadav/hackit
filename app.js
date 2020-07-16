@@ -40,7 +40,7 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 // Handlebars helpers
-const { checkAdmin, formatDate, stripTags, truncate, editIcon, questionStatus, lockIcon, worldStatus } = require('./helpers/hbs')
+const { checkAdmin, formatDate, stripTags, truncate, editIcon, questionStatus, lockIcon, worldStatus, qImage, qAudio, qVideo } = require('./helpers/hbs')
 
 // Handlebars
 app.engine(
@@ -55,6 +55,9 @@ app.engine(
             questionStatus,
             lockIcon,
             worldStatus,
+            qImage,
+            qAudio,
+            qVideo,
         }, 
         defaultLayout: 'main', 
         extname: '.hbs',
@@ -89,6 +92,7 @@ app.use('/auth', require('./routes/auth'))
 app.use('/worlds', require('./routes/worlds'))
 app.use('/questions', require('./routes/questions'))
 app.use('/ranklist', require('./routes/ranklist'))
+app.use('/answers', require('./routes/answers'))
 
 const PORT = process.env.PORT || 3000
 

@@ -1,0 +1,32 @@
+<h3>Edit world</h3>
+<div class="row">
+    <form action="/answers/{{answer._id}}" method="POST" class="col s12">
+    <input type="hidden" name="_method" value="PUT">
+        
+        <div class="row">
+            <div class="input-field">
+                <input type="number" id="worldNumber" name="worldNumber" min="1" max="1000" value="{{answer.worldNumber}}">
+                <label for="worldNumber">World Number</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field">
+                <input type="number" id="questionNo" name="questionNo" min="1" max="1000" value="{{answer.questionNo}}">
+                <label for="title">Question Number</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="ans" name="ans" value="{{answer.ans}}">
+                <label for="ans">Answer</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/answers" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>

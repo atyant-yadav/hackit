@@ -93,16 +93,4 @@ router.put('/:id', ensureAuth, async (req, res) => {
     }
 })
 
-// @desc   Delete world
-// @route  DELETE /worlds/:id
-router.delete('/:id', ensureAuth, async (req, res) => {
-    try {
-        await World.remove({ _id: req.params.id })
-        res.redirect('/dashboard')
-    } catch (err) {
-        console.error(err)
-        return res.render('error/500')
-    }
-})
-
 module.exports = router

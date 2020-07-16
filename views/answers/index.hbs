@@ -1,0 +1,44 @@
+<h4>Welcome {{name}}</h4>
+<h5>This is answer portal.</h5>
+{{#if (checkAdmin user)}}
+    <div class="fixed-action-btn">
+        <a href="/answers/add" class="btn-floating btn-large waves-effect waves-light red">
+        <i class="fas fa-plus"></i></a>
+    </div>
+{{/if}}
+
+{{#if answers}}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>World No</th>
+                <th>Question No</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each answers}}
+                <tr>
+                    <td>{{worldNumber}}</td>
+                    <td>{{questionNo}}</td>
+                    <td>{{ans}}</td>
+                    <td>
+                        <a href="/answers/edit/{{_id}}" class="btn btn-float">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <form action="/answers/{{_id}}" method="POST" id="delete-form">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn red">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>You do not have any Answers!!!</p>
+{{/if}}

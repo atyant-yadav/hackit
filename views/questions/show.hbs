@@ -12,42 +12,14 @@
                 {{{question.body}}}
             </div>
         </div>
-        <div class="card" id="carousel">
-            <div class="carousel carousel-slider center">
-                <div class="carousel-item red" href="#one!">
-                    <img class="imgg" src="/img/5.jpeg" >
-                </div>
-                <div class="carousel-item amber white-text" href="#two!">
-                    <img class="imgg" src="/img/2.jpeg" >
-                </div>
-                <div class="carousel-item green white-text" href="#three!">
-                    <img class="imgg" src="/img/3.jpeg" >
-                </div>
-                <div class="carousel-item green white-text" href="#four!">
-                    <img class="imgg" src="/img/4.jpeg" >
-                </div>
-                <div class="carousel-item green white-text" href="#five!">
-                    <img class="imgg" src="/img/1.jpeg" >
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <video width="400" controls>
-                <source src="/video/1.mp4" type="video/mp4">
-                Your browser does not support HTML video.
-            </video>
-        </div>
+        {{{qImage question}}}
+        {{{qVideo question}}}
     </div>
 
     {{!-- submit card --}}
     <div class="col s12 m4">
         <div class="card center-align">
-            <div class="card">
-                <audio controls>
-                    <source src="/audio/1.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
+            {{{qAudio question}}}
             <div class="card-content">
                 <span class="card-title">{{question.user.firstName}}</span>
                 <img src="{{question.user.image}}" class="circle responsive-img img-small" >
