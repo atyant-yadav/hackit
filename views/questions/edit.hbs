@@ -3,23 +3,59 @@
     <form action="/questions/{{question._id}}" method="POST" class="col s12">
     <input type="hidden" name="_method" value="PUT">
         
+        {{!-- Question number --}}
         <div class="row">
             <div class="input-field">
                 <input type="number" id="questionNo" name="questionNo" min="1" max="1000" value="{{question.questionNo}}">
-                <label for="title">Question Number</label>
+                <label for="questionNo">Question Number</label>
             </div>
         </div>
-        
+        {{!-- title --}}
         <div class="row">
             <div class="input-field">
                 <input type="text" id="title" name="title" value="{{question.title}}">
                 <label for="title">Title</label>
             </div>
         </div>
-
+        {{!-- world number --}}
         <div class="row">
             <div class="input-field">
-                <h5>Tell us Question:</h5>
+                <input type="number" id="worldNumber" name="worldNumber" min="1" max="1000" value="{{question.worldNumber}}">
+                <label for="worldNumber">World Number</label>
+            </div>
+        </div>
+        {{!-- world name --}}
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="worldName" name="worldName" value="{{question.worldName}}">
+                <label for="worldName">World name</label>
+            </div>
+        </div>
+        {{!-- image number --}}
+        <div class="row">
+            <div class="input-field">
+                <input type="number" id="imageNo" name="imageNo" min="0" max="1000" value="{{question.imageNo}}">
+                <label for="imageNo">Image Number</label>
+            </div>
+        </div>
+        {{!-- video number --}}
+        <div class="row">
+            <div class="input-field">
+                <input type="number" id="videoNo" name="videoNo" min="0" max="1000" value="{{question.videoNo}}">
+                <label for="videoNo">Video Number</label>
+            </div>
+        </div>
+        {{!-- audio number --}}
+        <div class="row">
+            <div class="input-field">
+                <input type="number" id="audioNo" name="audioNo" min="0" max="1000" value="{{question.audioNo}}">
+                <label for="audioNo">Audio Number</label>
+            </div>
+        </div>
+        {{!-- body --}}
+        <div class="row">
+            <div class="input-field">
+                <h5>Tell us your Story:</h5>
                 <textarea name="body" id="body">{{question.body}}</textarea>
             </div>
         </div>

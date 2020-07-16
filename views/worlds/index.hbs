@@ -1,4 +1,4 @@
-<p>Here are your Questions for this {{worldNamee}}!!!</p>
+<p>Here are your Questions for {{worldNamee}}!!!</p>
 
 {{#if (checkAdmin user)}}
     <div class="fixed-action-btn">
@@ -21,13 +21,13 @@
                 <tr>
                     <td>{{questionNo}}</td>
                     <td>
-                        {{#if (questionStatus questionNo ../user)}}
+                        {{#if (questionStatus questionNo worldNumber ../user)}}
                             <a href="/questions/{{_id}}"> {{title}} </a>
                         {{else}}
                             {{title}}
                         {{/if}}
                     </td>
-                    {{#if (questionStatus questionNo ../user)}}
+                    {{#if (questionStatus questionNo worldNumber ../user)}}
                     <td>
                         <a><i class="fa fa-unlock fa-2x" aria-hidden="true"></i></a>
                     </td>

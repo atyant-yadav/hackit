@@ -12,8 +12,11 @@ module.exports = {
         } 
         return flag;
     },
-    questionStatus: function (quesNo, loggedUser) {
-        if (loggedUser.questionNumber >= quesNo ){
+    questionStatus: function (quesNo, worldNo, loggedUser) {
+        if ( loggedUser.worldNumber > worldNo ) {
+            return true;
+        }
+        else if ( (loggedUser.worldNumber == worldNo) && (loggedUser.questionNumber >= quesNo ) ){
             return true
         }
         else {
