@@ -4,9 +4,9 @@ const { ensureAuth } = require('../middleware/auth')
 
 const Question = require('../models/Question')
 
-// @desc   Show add page
-// @route  GET /questions/add
-router.get('/add', ensureAuth, (req, res) => {
+// @desc   Show add page questions
+// @route  GET /questions/addQuestion
+router.get('/addQuestion', ensureAuth, (req, res) => {
     res.render('questions/add')
 })
 
@@ -15,6 +15,7 @@ router.get('/add', ensureAuth, (req, res) => {
 router.post('/', ensureAuth, async (req, res) => {
     try {
         req.body.user = req.user.id
+        console.log(req.body)
         await Question.create(req.body)
         res.redirect('/dashboard')
     } catch (err) {
@@ -23,23 +24,6 @@ router.post('/', ensureAuth, async (req, res) => {
     }
 })
 
-// @desc   Show all questions
-// @route  GET /questions
-router.get('/', ensureAuth, async (req, res) => {
-    try {
-        const questions = await Question.find({ })
-            .populate('user')
-            .sort({ questionNo: 'asc' })
-            .lean()
-        
-        res.render  ('questions/index', {
-            questions,
-        })  
-    } catch (err) {
-        console.error(err)
-        res.render('error/500')
-    }
-})
 
 // @desc   Show single question
 // @route  GET /questions/:id

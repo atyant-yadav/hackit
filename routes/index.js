@@ -4,6 +4,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 const Question = require('../models/Question')
 const User = require('../models/User')
+const World = require('../models/World')
 
 // @desc   LOgin/Landing page
 // @route  GET /
@@ -17,12 +18,12 @@ router.get('/', ensureGuest, (req, res) => {
 // @route  GET /dashboard
 router.get('/dashboard', ensureAuth, async (req, res) => {
     try {
-        const questions = await Question.find({  }).lean()
+        const worlds = await World.find({  }).lean()
         res.render('dashboard', {
             name: req.user.firstName,
             user: req.user,
             img: req.user.image,
-            questions,
+            worlds,
         })
     } catch (err) {
         console.error(err)

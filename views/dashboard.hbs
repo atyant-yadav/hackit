@@ -1,59 +1,51 @@
-<h5>Dashboard</h5>
-<h3>Welcome {{name}}
+<h4>Welcome {{name}}
     <div class="chip right">
         <img src="{{img}}" alt="">{{name}}
     </div>
-</h3>
+</h4>
 
-<p>Here are your Questions!!!</p>
-{{#if questions}}
-    <table class="striped">
-        <thead>
-            <tr>
-                <th>Question No</th>
-                <th>Title</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each questions}}
-                <tr>
-                    <td>{{questionNo}}</td>
-                    <td>
-                        {{#if (questionStatus questionNo ../user)}}
-                            <a href="/questions/{{_id}}"> {{title}} </a>
-                        {{else}}
-                            {{title}}
-                        {{/if}}
-                    </td>
-                    {{#if (questionStatus questionNo ../user)}}
-                    <td>
-                        <a><i class="fa fa-unlock fa-2x" aria-hidden="true"></i></a>
-                    </td>
-                    {{else}}
-                        <td>
-                            <i class="fa fa-lock fa-2x" aria-hidden="true"></i>
-                        </td>
-                    {{/if}}
-                    {{#if (checkAdmin ../user)}}
-                    <td>
-                        <a href="/questions/edit/{{_id}}" class="btn btn-float">
-                            <i class="fas fa-edit"></i>
-                        </a>
-
-                        <form action="/questions/{{_id}}" method="POST" id="delete-form">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn red">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
-
-                    </td>
-                    {{/if}}
-                </tr>
-            {{/each}}
-        </tbody>
-    </table>
-{{else}}
-    <p>You do not have any Questions!!!</p>
+{{#if (checkAdmin user)}}
+    <div class="fixed-action-btn">
+        <a href="/worlds/addWorld" class="btn-floating btn-large waves-effect waves-light blue">
+        <i class="fas fa-plus"></i></a>
+    </div>
 {{/if}}
+
+<h3 style="text-align: center;">Worlds</h3>
+
+<div class="row">
+    {{#each worlds}}
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {{#if (checkAdmin ../user)}}
+                {{{editIcon user ../user _id}}}
+                {{/if}}
+            </div>
+            <div class="card-content center-align">
+                <h4>
+                    {{{lockIcon (worldStatus worldNumber ../user)}}}
+                    World: {{worldNumber}}
+                </h4>
+                <h5>{{worldName}}</h5>
+                <p>{{stripTags (truncate body 150)}}</p>
+                <br>
+                {{!-- <div class="chip">
+                    <img src="{{user.image}}" alt="">
+                    <a href="/questions/user/{{user._id}}">{{user.firstName}}</a>
+                </div> --}}
+            </div>
+            <div class="card-action center-align">
+                {{#if (worldStatus worldNumber ../user)}}
+                    <a href="/worlds/{{_id}}" class="btn blue">See Questions</a>
+                {{else}}
+                    <a  class="btn grey">Solve Previous to Unlock</a>
+                {{/if}}
+                
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>No worlds to display</p>
+    {{/each}}
+</div>

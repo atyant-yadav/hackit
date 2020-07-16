@@ -13,6 +13,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    worldNumber: {
+        type: Number,
+        default: 1,
+    },
     questionNumber: {
         type: Number,
         default: 1,

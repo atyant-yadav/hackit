@@ -1,0 +1,60 @@
+<p>Here are your Questions for this {{worldNamee}}!!!</p>
+
+{{#if (checkAdmin user)}}
+    <div class="fixed-action-btn">
+        <a href="/questions/addQuestion" class="btn-floating btn-large waves-effect waves-light red">
+        <i class="fas fa-plus"></i></a>
+    </div>
+{{/if}}
+
+{{#if questions}}
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Question No</th>
+                <th>Title</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each questions}}
+                <tr>
+                    <td>{{questionNo}}</td>
+                    <td>
+                        {{#if (questionStatus questionNo ../user)}}
+                            <a href="/questions/{{_id}}"> {{title}} </a>
+                        {{else}}
+                            {{title}}
+                        {{/if}}
+                    </td>
+                    {{#if (questionStatus questionNo ../user)}}
+                    <td>
+                        <a><i class="fa fa-unlock fa-2x" aria-hidden="true"></i></a>
+                    </td>
+                    {{else}}
+                        <td>
+                            <i class="fa fa-lock fa-2x" aria-hidden="true"></i>
+                        </td>
+                    {{/if}}
+                    {{#if (checkAdmin user)}}
+                    <td>
+                        <a href="/questions/edit/{{_id}}" class="btn btn-float">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <form action="/questions/{{_id}}" method="POST" id="delete-form">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn red">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+
+                    </td>
+                    {{/if}}
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>You do not have any Questions!!!</p>
+{{/if}}

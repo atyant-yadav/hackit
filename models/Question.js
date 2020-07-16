@@ -14,6 +14,26 @@ const QuestionSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    imageNo: {
+        type: Number,
+        required: true,
+    },
+    videoNo: {
+        type: Number,
+        required: true,
+    },
+    audioNo: {
+        type: Number,
+        required: true,
+    },
+    worldNumber: {
+        type: Number,
+        required: true,
+    },
+    worldName: {
+        type: String,
+        required: true
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

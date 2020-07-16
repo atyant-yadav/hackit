@@ -40,7 +40,7 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 // Handlebars helpers
-const { checkAdmin, formatDate, stripTags, truncate, editIcon, questionStatus, lockIcon } = require('./helpers/hbs')
+const { checkAdmin, formatDate, stripTags, truncate, editIcon, questionStatus, lockIcon, worldStatus } = require('./helpers/hbs')
 
 // Handlebars
 app.engine(
@@ -54,6 +54,7 @@ app.engine(
             editIcon,
             questionStatus,
             lockIcon,
+            worldStatus,
         }, 
         defaultLayout: 'main', 
         extname: '.hbs',
@@ -85,6 +86,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
+app.use('/worlds', require('./routes/worlds'))
 app.use('/questions', require('./routes/questions'))
 app.use('/ranklist', require('./routes/ranklist'))
 

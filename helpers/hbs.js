@@ -21,6 +21,14 @@ module.exports = {
             return false
         }
     },
+    worldStatus: function (worldNo, loggedUser) {
+        if (loggedUser.questionNumber >= worldNo ){
+            return true
+        }
+        else {
+            return false
+        }
+    },
     formatDate: function (date, format) {
         return moment(date).format(format)
     },
@@ -37,12 +45,12 @@ module.exports = {
     stripTags: function (input) {
         return input.replace(/<(?:.|\n)*?>/gm, '')
     },
-    editIcon: function (storyUser, loggedUser, storyId, floating = true) {
+    editIcon: function (storyUser, loggedUser, worldId, floating = true) {
        if (storyUser._id.toString() == loggedUser._id.toString()) {
             if (floating) {
-                return `<a href="/questions/edit/${storyId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`
+                return `<a href="/worlds/edit/${worldId}" class="btn-floating halfway-fab blue"><i class="fas fa-edit fa-small"></i></a>`
             } else {
-                return `<a href="/questions/edit/${storyId}"><i class="fas fa-edit"></i></a>`
+                return `<a href="/worlds/edit/${worldId}"><i class="fas fa-edit"></i></a>`
             }
        } else {
             return ''
