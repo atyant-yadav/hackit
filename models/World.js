@@ -13,6 +13,10 @@ const WorldsSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    maxQues: {
+        type: Number,
+        required: true,
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

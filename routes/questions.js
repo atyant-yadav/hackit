@@ -3,6 +3,7 @@ const router = express.Router()
 const { ensureAuth } = require('../middleware/auth')
 
 const Question = require('../models/Question')
+const Answer = require('../models/Answer')
 
 // @desc   Show add page questions
 // @route  GET /questions/addQuestion
@@ -38,7 +39,13 @@ router.get('/:id', ensureAuth, async (req, res) => {
         }
 
         res.render('questions/show', {
-            question
+            question,
+            name: req.user.firstName,
+            user: req.user,
+            img: req.user.image,
+            userid: req.user._id,
+            usrWSol: req.user.worldSolved,
+            usrQSol: req.user.questionSolved,
         })
     } catch (err) {
              console.error(err)
@@ -108,6 +115,5 @@ router.delete('/:id', ensureAuth, async (req, res) => {
         return res.render('error/500')
     }
 })
-
 
 module.exports = router

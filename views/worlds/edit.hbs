@@ -5,15 +5,22 @@
         
         <div class="row">
             <div class="input-field">
-                <input type="number" id="worldNo" name="worldNo" min="1" max="1000" value="{{world.worldNumber}}">
-                <label for="worldNo">World Number</label>
+                <input type="number" id="worldNumber" name="worldNumber" min="1" max="1000" value="{{world.worldNumber}}">
+                <label for="worldNumber">World Number</label>
             </div>
         </div>
         
         <div class="row">
             <div class="input-field">
-                <input type="text" id="title" name="title" value="{{world.worldName}}">
-                <label for="title">Title</label>
+                <input type="text" id="worldName" name="worldName" value="{{world.worldName}}">
+                <label for="worldName">World Title</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <input type="number" id="maxQues" name="maxQues" min="1" max="1000" value="{{world.maxQues}}">
+                <label for="maxQues">Number of questions in this world?</label>
             </div>
         </div>
 

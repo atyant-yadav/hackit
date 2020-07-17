@@ -12,6 +12,10 @@ const AnswersSchema = new mongoose.Schema({
     ans: {
         type: String,
         required: true,
+    },
+    points: {
+        type: Number,
+        required: true,
     }
 })
 

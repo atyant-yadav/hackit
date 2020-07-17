@@ -9,12 +9,14 @@ const User = require('../models/User')
 // @route  GET /ranklist
 router.get('/', ensureAuth, async (req, res) => {
     try {
-        const questions = await Question.find({  }).lean()
+        const users = await User.find({  })
+        .sort({ score: 'desc', penalty: 'asc' })
+        .lean()
         res.render('ranklist', {
             name: req.user.firstName,
             user: req.user,
             img: req.user.image,
-            questions,
+            users,
         })
     } catch (err) {
         console.error(err)

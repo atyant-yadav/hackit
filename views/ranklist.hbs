@@ -1,18 +1,23 @@
 <h5>Ranklist</h5>
-<h3>Welcome {{name}}
+<h4>Welcome {{name}}
     <div class="chip right">
         <img src="{{img}}" alt="">{{name}}
     </div>
-</h3>
+</h4>
 
-
-  <ul class="collection">
-    <li class="collection-item avatar">
-      <img src="images/yuna.jpg" alt="" class="circle">
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-    </li>
-  </ul>
+{{#if users}}
+  {{#each users}}
+      <ul class="collection">
+        <li class="collection-item avatar">
+          <img src="{{image}}" alt="" class="circle">
+          <span class="title">{{displayName}}</span>
+          <p> Score - {{score}} <br>
+              Penalty - {{penalty}}
+          </p>
+          <div class="secondary-content">Rank {{inc @index}}</div>
+        </li>
+      </ul>
+  {{/each}}
+{{else}}
+    <p>There are no Users!!!</p>
+{{/if}}

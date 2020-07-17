@@ -36,6 +36,18 @@ const UserSchema = new mongoose.Schema({
     image: {
         type: String,
     },
+    score: {
+        type: Number,
+        default: 0,
+    },
+    penalty: {
+        type: Number,
+        default: 0,
+    },
+    timeQues:{
+        type: Date,
+        default: Date.now
+    },
     createdAt: {
         type: Date,
         default: Date.now

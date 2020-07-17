@@ -3,6 +3,9 @@ const moment = require('moment')
 let adminName = ['b17037', 'Rishabh', 'b17116', 'Satyam', 'Sambhav']
 
 module.exports = {
+    inc: function (value) {
+        return parseInt(value) + 1;
+    },
     checkAdmin: function (loggedUser) {
         let flag = false;
         for (i = 0; i < adminName.length; i++) {
@@ -29,6 +32,17 @@ module.exports = {
         }
         else {
             return false
+        }
+    },
+    submitStatus: function (usrWNoSol, usrQNoSol, qNo, WNo) {
+        if(usrWNoSol>WNo){
+            return false
+        }
+        else if ( usrWNoSol==WNo && usrQNoSol>=qNo ) {
+            return false
+        }
+        else{
+            return true
         }
     },
     formatDate: function (date, format) {
