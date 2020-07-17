@@ -24,7 +24,7 @@ module.exports = {
         }
     },
     worldStatus: function (worldNo, loggedUser) {
-        if (loggedUser.questionNumber >= worldNo ){
+        if (loggedUser.worldNumber >= worldNo ){
             return true
         }
         else {

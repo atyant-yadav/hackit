@@ -21,6 +21,14 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 1,
     },
+    questionSolved: {
+        type: Number,
+        default: 0,
+    },
+    worldSolved: {
+        type: Number,
+        default: 1,
+    },
     lastName: {
         type: String,
         required: true
