@@ -12,9 +12,6 @@ const World = require('../models/World')
 // @route  POST /calc/:id
 router.post('/:id', ensureAuth, async (req, res) => {
     try {
-        console.log(req.params.id)
-        console.log(req.body.person)
-        
         let pathe = `/questions/${req.params.id}`
         let user = await User.findById(req.body.person).lean()
         let question = await Question.findById(req.params.id).lean()
@@ -30,6 +27,7 @@ router.post('/:id', ensureAuth, async (req, res) => {
                     let wNo = question.worldNumber
                     let qNo = question.questionNo
                     let dat = Date.now()
+                    pathe = `/worlds/${world._id}`
                     if (question.questionNo == world.maxQues) {
                         qSol = 0
                         wSol = wSol+1
@@ -59,7 +57,7 @@ router.post('/:id', ensureAuth, async (req, res) => {
                 }
             }
         }
-        res.redirect(pathe)
+        res.redirect(pathe)  
 
     } catch (err) {
         console.error(err)

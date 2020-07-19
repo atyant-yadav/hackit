@@ -4,7 +4,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 const Answer = require('../models/Answer')
 
-let adminName = ['b17037', 'Rishabh', 'b17116', 'Satyam', 'Sambhav']
+let adminName = ['b17037', 'Rishabh', 'b17116', 'Satyam', 'Sambhav', 'Saransh']
 
 // @desc   answers
 // @route  GET /answers
