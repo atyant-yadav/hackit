@@ -10,7 +10,7 @@ const User = require('../models/User')
 router.get('/', ensureAuth, async (req, res) => {
     try {
         const users = await User.find({  })
-        .sort({ score: 'desc', penalty: 'asc' })
+        .sort({ score: 'desc', penalty: 'asc', timeQues: 'asc' })
         .lean()
         res.render('ranklist', {
             name: req.user.firstName,

@@ -16,6 +16,10 @@ const AnswersSchema = new mongoose.Schema({
     points: {
         type: Number,
         required: true,
+    },
+    penalty: {
+        type: Number,
+        required: true,
     }
 })
 

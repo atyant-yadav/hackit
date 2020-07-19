@@ -23,12 +23,13 @@ router.post('/:id', ensureAuth, async (req, res) => {
 
         if (user.worldSolved == question.worldNumber) {
             if (user.questionSolved+1 == question.questionNo) {
-                if (req.body.ans.toString().toLowerCase() == answer.ans) {
+                if (req.body.ans.toString().toLowerCase() == answer.ans.toLowerCase()) {
                     let sco = user.score+answer.points
                     let qSol = user.questionSolved
                     let wSol = user.worldSolved
                     let wNo = question.worldNumber
                     let qNo = question.questionNo
+                    let dat = Date.now()
                     if (question.questionNo == world.maxQues) {
                         qSol = 0
                         wSol = wSol+1
@@ -47,10 +48,11 @@ router.post('/:id', ensureAuth, async (req, res) => {
                         worldSolved: wSol,
                         worldNumber: wNo,
                         questionNumber: qNo,
+                        timeQues: dat,
                     } )
                 }
                 else{
-                    let pen = user.penalty + 1
+                    let pen = user.penalty + answer.penalty
                     userr = await User.findOneAndUpdate({ _id: req.body.person }, { 
                         penalty: pen
                     } )
