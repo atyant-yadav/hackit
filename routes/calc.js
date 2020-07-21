@@ -15,13 +15,20 @@ router.post('/:id', ensureAuth, async (req, res) => {
         let pathe = `/questions/${req.params.id}`
         let user = await User.findById(req.body.person).lean()
         let question = await Question.findById(req.params.id).lean()
-        let answer = await Answer.findOne( { worldNumber: question.worldNumber, questionNo: question.questionNo } ).lean()
+        let answer = await Answer.find( { worldNumber: question.worldNumber, questionNo: question.questionNo } ).lean()
         let world = await World.findOne( {worldNumber: question.worldNumber} ).lean()
 
         if (user.worldSolved == question.worldNumber) {
             if (user.questionSolved+1 == question.questionNo) {
-                if (req.body.ans.toString().toLowerCase() == answer.ans.toLowerCase()) {
-                    let sco = user.score+answer.points
+                let flagg = -1
+                // console.log(answer.length)
+                for (let i = 0; i < answer.length; i++) {
+                    if (req.body.ans.toString().toLowerCase() == answer[i].ans.toLowerCase()){
+                        flagg = i
+                    }
+                }
+                if (flagg>=0) {
+                    let sco = user.score+answer[flagg].points
                     let qSol = user.questionSolved
                     let wSol = user.worldSolved
                     let wNo = question.worldNumber
@@ -50,7 +57,7 @@ router.post('/:id', ensureAuth, async (req, res) => {
                     } )
                 }
                 else{
-                    let pen = user.penalty + answer.penalty
+                    let pen = user.penalty + answer[0].penalty
                     userr = await User.findOneAndUpdate({ _id: req.body.person }, { 
                         penalty: pen
                     } )

@@ -17,6 +17,11 @@ const AnswersSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    ansCount: {
+        type: Number,
+        default: 1,
+        required: true,
+    },
     penalty: {
         type: Number,
         required: true,
