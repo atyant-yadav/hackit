@@ -124,7 +124,7 @@ module.exports = {
         }
     },
     qVideo: function (question) {
-        if (question.audioNo == 1){
+        if (question.videoNo == 1){
         let vid = question.worldNumber+'_'+question.questionNo
         return `
         <div class="card">
