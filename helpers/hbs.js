@@ -1,6 +1,6 @@
 const moment = require('moment')
 
-let adminName = ['b17037', 'Rishabh', 'b17116', 'Satyam', 'Sambhav', 'Saransh']
+let adminName = ['b17037', 'Finite', 'Bigboy']
 
 module.exports = {
     inc: function (value) {
