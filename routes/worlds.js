@@ -37,10 +37,11 @@ router.get('/:id', ensureAuth, async (req, res) => {
             .populate('user')
             .sort({ questionNo: 'asc' })
             .lean()
-
+        
         res.render  ('worlds/index', {
             questions,
             worldNamee,
+            namecheck: req.user,
         })  
     } catch (err) {
         console.error(err)
